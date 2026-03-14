@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LeetCode Tracker</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <span class="logo-lc">lc</span><span class="logo-slash">/</span><span class="logo-gh">gh</span>
+      </div>
+      <div class="status-dot" id="statusDot"></div>
+    </header>
+
+    <!-- SETUP VIEW -->
+    <div id="setupView" class="view">
+      <div class="setup-title">Connect GitHub</div>
+      <div class="setup-sub">Paste your GitHub Personal Access Token to get started.</div>
+
+      <div class="field">
+        <label>GitHub Token</label>
+        <div class="input-row">
+          <input type="password" id="tokenInput" placeholder="ghp_xxxxxxxxxxxx" />
+          <button class="btn-icon" id="toggleToken" title="Show/hide">👁</button>
+        </div>
+        <a class="hint-link" href="https://github.com/settings/tokens/new?scopes=repo&description=LeetCode+Tracker" target="_blank">
+          Generate token on GitHub →
+        </a>
+      </div>
+
+      <div class="field">
+        <label>GitHub Username</label>
+        <input type="text" id="usernameInput" placeholder="your-github-username" />
+      </div>
+
+      <div class="field">
+        <label>Repository Name</label>
+        <input type="text" id="repoInput" placeholder="leetcode-solutions" />
+        <div class="hint">Will be created automatically if it doesn't exist.</div>
+      </div>
+
+      <button class="btn-primary" id="saveBtn">Save & Connect</button>
+      <div class="error-msg" id="setupError"></div>
+    </div>
+
+    <!-- MAIN VIEW -->
+    <div id="mainView" class="view hidden">
+      <!-- Connected info -->
+      <div class="connected-bar">
+        <div class="connected-info">
+          <span class="connected-dot">●</span>
+          <span id="connectedRepo"></span>
+        </div>
+        <button class="btn-text" id="disconnectBtn">Disconnect</button>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-row">
+        <div class="stat-box">
+          <div class="stat-num" id="totalPushed">0</div>
+          <div class="stat-label">Pushed</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num easy" id="easyCount">0</div>
+          <div class="stat-label">Easy</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num medium" id="medCount">0</div>
+          <div class="stat-label">Medium</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num hard" id="hardCount">0</div>
+          <div class="stat-label">Hard</div>
+        </div>
+      </div>
+
+      <!-- Recent pushes -->
+      <div class="section-title">Recent Pushes</div>
+      <div class="recent-list" id="recentList">
+        <div class="empty-state">No solutions pushed yet.<br/>Solve a problem on LeetCode!</div>
+      </div>
+
+      <!-- View on GitHub -->
+      <a class="btn-outline" id="viewGithubBtn" href="#" target="_blank">View on GitHub →</a>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
